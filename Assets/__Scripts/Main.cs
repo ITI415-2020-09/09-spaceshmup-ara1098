@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Main : MonoBehaviour {
 
@@ -20,9 +21,18 @@ public class Main : MonoBehaviour {
     };
 
     private BoundsCheck bndCheck;
-
+    public Text scoreGT;
+    public Text highScore;
+    public int currentScore;
     public void ShipDestroyed( Enemy e)
     {
+        currentScore = currentScore + e.getScore();
+        scoreGT.text = "Score: " + currentScore.ToString();
+        if (currentScore>HighScore.score)
+        {
+            HighScore.score = currentScore;
+        }
+
         // Potentially generate a PowerUp
         if (Random.value <= e.powerUpDropChance)
         {
@@ -43,6 +53,16 @@ public class Main : MonoBehaviour {
 
     private void Awake()
     {
+        // Find a reference to the ScoreCounter GameObject
+        GameObject scoreGO = GameObject.Find("Score");
+        // Get the Text Component of that GameObject
+        scoreGT = scoreGO.GetComponent<Text>();
+        // Set the starting number of points to 0
+        scoreGT.text = "Score: 0";
+        currentScore = 0;
+
+
+
         S = this;
         // Set bndCheck to reference the BoundsCheck component on this GameObject
         bndCheck = GetComponent<BoundsCheck>();

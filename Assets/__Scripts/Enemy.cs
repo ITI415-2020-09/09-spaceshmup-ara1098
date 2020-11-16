@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Enemy : MonoBehaviour {
 
     [Header("Set in Inspector: Enemy")]
@@ -18,11 +19,18 @@ public class Enemy : MonoBehaviour {
     public bool showingDamage = false;
     public float damageDoneTime; // Time to stop showing damage
     public bool notifiedOfDestruction = false; // Will be used later
-
     protected BoundsCheck bndCheck;
+
+    
+    public int getScore()
+    {
+        return score;
+    }
 
     private void Awake()
     {
+       
+
         bndCheck = GetComponent<BoundsCheck>();
         // Get materials and colors for this GameObject and its children
         materials = Utils.GetAllMaterials(gameObject);
@@ -32,6 +40,7 @@ public class Enemy : MonoBehaviour {
             originalColors[i] = materials[i].color;
         }
     }
+
 
     // This is a property: A method that acts like a field
     public Vector3 pos
@@ -97,6 +106,7 @@ public class Enemy : MonoBehaviour {
                     notifiedOfDestruction = true;
                     // Destroy this enemy
                     Destroy(this.gameObject);
+
                 }
                 Destroy(otherGO);
                 break;
