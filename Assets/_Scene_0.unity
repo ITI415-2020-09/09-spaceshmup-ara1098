@@ -383,7 +383,7 @@ MonoBehaviour:
     projectileColor: {r: 0, g: 0.654902, b: 1, a: 1}
     damageOnHit: 1
     continuousDamage: 0
-    delayBetweenShots: 0.4
+    delayBetweenShots: 1
     velocity: 50
   - type: 6
     letter: O
