@@ -27,6 +27,7 @@ public class HighScore : MonoBehaviour
         if (score > PlayerPrefs.GetInt("HighScore"))
         {                      
             PlayerPrefs.SetInt("HighScore", score);
+
         }
 
     }

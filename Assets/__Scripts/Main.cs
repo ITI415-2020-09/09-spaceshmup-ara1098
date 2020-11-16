@@ -22,8 +22,9 @@ public class Main : MonoBehaviour {
 
     private BoundsCheck bndCheck;
     public Text scoreGT;
-    public Text highScore;
     public int currentScore;
+
+
     public void ShipDestroyed( Enemy e)
     {
         currentScore = currentScore + e.getScore();
@@ -60,6 +61,7 @@ public class Main : MonoBehaviour {
         // Set the starting number of points to 0
         scoreGT.text = "Score: 0";
         currentScore = 0;
+
 
 
 
